@@ -1,6 +1,7 @@
 var p1, p2;
 var p1V, p2V; //controlling the speed of the paddles
 
+var ball1, ballV; //controlling the speed of the ball
 
 // p5 will look for a function named setup
 
@@ -9,6 +10,10 @@ function setup() {
   createCanvas(600, 400);
   p1 = p2 = height / 2 - 50; //This holds coordinates. Subtracting the height from half of the paddle so that the paddles start in the middle
   p1V = p2V = 0;
+
+  //Drawing the ball
+  ball1 = createVector(width / 2, height / 2);
+  ball1V = createVector(random(-2, 2), random(-2, 2));
 }
 
 // This is run 60 times per second, as fast as it can go
@@ -19,14 +24,23 @@ function draw() {
   rect(20, p1, 10, 100);
   rect(width - 20, p2, 10, 100);
 
+  //creating the ball1
+  ellipse(ball1.x, ball1.y, 20);
+
   //handle paddles
-  handleMovement();
+  handlePaddles();
+  //handling the ball
+  handleBall();
 
 }
 
 
+
+
+
+
 //p5 allows you to check if a key is down or not and controls the movement
-function handleMovement() {
+function handlePaddles() {
 
   //player one controls
   if(keyIsDown(87)){
@@ -56,6 +70,10 @@ function handleMovement() {
 
   p1V *= 0.4;
   p2V *= 0.4;
+
+
+  ball1 += bV;
+  ball1 *= 0.4;
 
 
 
