@@ -36,7 +36,9 @@ function draw() {
 
 
 
-
+function handleBall() {
+  
+}
 
 
 //p5 allows you to check if a key is down or not and controls the movement
@@ -72,8 +74,6 @@ function handlePaddles() {
   p2V *= 0.4;
 
 
-  ball1 += bV;
-  ball1 *= 0.4;
 
 
 
