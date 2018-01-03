@@ -1,7 +1,7 @@
 var p1, p2;
 var p1V, p2V; //controlling the speed of the paddles
 
-var ball1, ballV; //controlling the speed of the ball
+var ball1, ball1V; //controlling the speed of the ball
 
 // p5 will look for a function named setup
 
@@ -37,7 +37,11 @@ function draw() {
 
 
 function handleBall() {
-  
+//controlling the velocity of the ball
+  ball1.x += ball1V.x;
+  ball1.y += ball1V.y;
+
+
 }
 
 
