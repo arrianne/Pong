@@ -13,7 +13,7 @@ function setup() {
 
   //Drawing the ball
   ball1 = createVector(width / 2, height / 2);
-  ball1V = createVector(random(-2, 2), random(-2, 2));
+  ball1V = createVector(random(4), random(4));
 }
 
 // This is run 60 times per second, as fast as it can go
@@ -22,7 +22,7 @@ function draw() {
 
   //This creates the actual paddle shape, x axis not needed for up and down motion
   rect(20, p1, 10, 100);
-  rect(width - 20, p2, 10, 100);
+  rect(width - 30, p2, 10, 100);
 
   //creating the ball1
   ellipse(ball1.x, ball1.y, 20);
@@ -37,6 +37,12 @@ function draw() {
 
 
 function handleBall() {
+
+
+//controlling the velocity of the ball
+  ball1.x += ball1V.x;
+  ball1.y += ball1V.y;
+
 //we need the ball to acknowledge the edges of the canvas
 
 //Collisions with the top and bottom
@@ -44,13 +50,29 @@ function handleBall() {
 if (ball1.y > height || ball1.y < 0)
   ball1V.y *= -1; //This inverts it and goes in rickashay pattern.
 
-//paddle collisions
+//paddle collisions - the tricky part!
 
+if (ball1.x <= 30) { //right side
 
+//check if the x position actually falls on the length of the paddle
+if(ball1.y > p1 && ball1.y < p1 + 100){
 
-//controlling the velocity of the ball
-  ball1.x += ball1V.x;
-  ball1.y += ball1V.y;
+  ball1V.x *= -1;
+  console.log("p1");
+
+}
+
+} else if (ball1.x >= width - 30){ //left side
+
+  if(ball1.y > p2 && ball1.y < p2 + 100) {
+
+    ball1V.x *= -1;
+    console.log("p2");
+
+  }
+
+}
+
 
 
 }
