@@ -37,6 +37,17 @@ function draw() {
 
 
 function handleBall() {
+//we need the ball to acknowledge the edges of the canvas
+
+//Collisions with the top and bottom
+//so if the balls y axis is greater than the height of the canvas or smaller than zero then it will bounce off the edges.
+if (ball1.y > height || ball1.y < 0)
+  ball1V.y *= -1; //This inverts it and goes in rickashay pattern.
+
+//paddle collisions
+
+
+
 //controlling the velocity of the ball
   ball1.x += ball1V.x;
   ball1.y += ball1V.y;
