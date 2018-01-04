@@ -14,6 +14,12 @@ function setup() {
   p1S = 0;
   p2S = 0;
 
+
+  //Drawing the scoreboard
+  textAlign(CENTER);
+  textSize(30);
+
+
   //Drawing the ball
   ball1 = createVector(width / 2, height / 2);
   ball1V = createVector(random(4), random(4));
@@ -23,12 +29,21 @@ function setup() {
 function draw() {
   background(51);
 
+
+  //Creating the scoreboard
+  // text();
+
   //This creates the actual paddle shape, x axis not needed for up and down motion
   rect(20, p1, 10, 100);
   rect(width - 30, p2, 10, 100);
 
   //creating the ball1
   ellipse(ball1.x, ball1.y, 20);
+
+
+
+  //handlling the scoreboard
+  // text = (p1S + " | " + p2S, width / 2, 50);
 
   //handle paddles
   handlePaddles();
@@ -58,7 +73,7 @@ if (ball1.y > height || ball1.y < 0)
 if (ball1.x <= 30) { //right side
 
 //out of bounds
-if (ball1.x >= 20){
+if (ball1.x <= 10){
   p2S++;
   reset();
   return;
@@ -76,7 +91,7 @@ if(ball1.y > p1 && ball1.y < p1 + 100){
 
 
 //out of bounds
-  if ( ball1.x <= width - 20 ){
+  if ( ball1.x >= width - 10 ){
     p1S++; //
     reset();
     return;
