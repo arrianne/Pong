@@ -13,38 +13,26 @@ function setup() {
   p1V = p2V = 0;
   p1S = 0;
   p2S = 0;
-
-
   //Drawing the scoreboard
   textAlign(CENTER);
   textSize(30);
-
-
+  fill(255);
   //Drawing the ball
   ball1 = createVector(width / 2, height / 2);
   ball1V = createVector(random(4), random(4));
 }
 
+
 // This is run 60 times per second, as fast as it can go
 function draw() {
   background(51);
-
-
-  //Creating the scoreboard
-  // text();
-
   //This creates the actual paddle shape, x axis not needed for up and down motion
   rect(20, p1, 10, 100);
   rect(width - 30, p2, 10, 100);
-
   //creating the ball1
   ellipse(ball1.x, ball1.y, 20);
-
-
-
   //handlling the scoreboard
-  // text = (p1S + " | " + p2S, width / 2, 50);
-
+  text(p1S + " | " + p2S, width / 2, 50);
   //handle paddles
   handlePaddles();
   //handling the ball
@@ -56,41 +44,31 @@ function draw() {
 
 function handleBall() {
 
-
-//controlling the velocity of the ball
+  //controlling the velocity of the ball
   ball1.x += ball1V.x;
   ball1.y += ball1V.y;
-
-//we need the ball to acknowledge the edges of the canvas
+  //we need the ball to acknowledge the edges of the canvas
 
 //Collisions with the top and bottom
 //so if the balls y axis is greater than the height of the canvas or smaller than zero then it will bounce off the edges.
-if (ball1.y > height || ball1.y < 0)
+  if (ball1.y > height || ball1.y < 0)
   ball1V.y *= -1; //This inverts it and goes in rickashay pattern.
-
-//paddle collisions - the tricky part!
-
-if (ball1.x <= 30) { //right side
-
-//out of bounds
-if (ball1.x <= 10){
+  //paddle collisions - the tricky part!
+  if (ball1.x <= 30) { //right side
+  //out of bounds
+  if (ball1.x <= 10){
   p2S++;
   reset();
   return;
 }
+  //right paddle
+  //check if the x position actually falls on the length of the paddle
+  if(ball1.y > p1 && ball1.y < p1 + 100){
+      ball1V.x *= -1;
+    }
 
-//right paddle
-//check if the x position actually falls on the length of the paddle
-if(ball1.y > p1 && ball1.y < p1 + 100){
-
-  ball1V.x *= -1;
-
-}
-
-} else if (ball1.x >= width - 30) {
-
-
-//out of bounds
+  } else if (ball1.x >= width - 30) {
+  //out of bounds
   if ( ball1.x >= width - 10 ){
     p1S++; //
     reset();
@@ -98,21 +76,14 @@ if(ball1.y > p1 && ball1.y < p1 + 100){
   }
 
  //left paddle
-
   if(ball1.y > p2 && ball1.y < p2 + 100) {
-
-    ball1V.x *= -1;
-
+      ball1V.x *= -1;
+    }
   }
 
-}
-
-function reset() {
-  ball1 = createVector(width / 2, height /2);
-}
-
-
-
+  function reset() {
+    ball1 = createVector(width / 2, height /2);
+  }
 }
 
 
@@ -121,8 +92,6 @@ function handlePaddles() {
 
   //player one controls
   if(keyIsDown(87)){
-    console.log('Why is this bat not moving');
-
     //move up
     p1V -= 5;
   } else if(keyIsDown(83)) {
@@ -139,18 +108,12 @@ function handlePaddles() {
     p2V += 5;
   }
 
-
   //Slows the paddles down and gives the illusion of friction
-
   p1 += p1V;
   p2 += p2V;
 
   p1V *= 0.4;
   p2V *= 0.4;
-
-
-
-
 
   //Need to constrain the paddles
   p1 = constrain(p1, 0, height - 100);
