@@ -1,5 +1,6 @@
 var p1, p2;
 var p1V, p2V; //controlling the speed of the paddles
+var p1S, p2S;
 
 var ball1, ball1V; //controlling the speed of the ball
 
@@ -10,6 +11,8 @@ function setup() {
   createCanvas(600, 400);
   p1 = p2 = height / 2 - 50; //This holds coordinates. Subtracting the height from half of the paddle so that the paddles start in the middle
   p1V = p2V = 0;
+  p1S = 0;
+  p2S = 0;
 
   //Drawing the ball
   ball1 = createVector(width / 2, height / 2);
@@ -54,23 +57,43 @@ if (ball1.y > height || ball1.y < 0)
 
 if (ball1.x <= 30) { //right side
 
+//out of bounds
+if (ball1.x >= 20){
+  p2S++;
+  reset();
+  return;
+}
+
+//right paddle
 //check if the x position actually falls on the length of the paddle
 if(ball1.y > p1 && ball1.y < p1 + 100){
 
   ball1V.x *= -1;
-  console.log("p1");
 
 }
 
-} else if (ball1.x >= width - 30){ //left side
+} else if (ball1.x >= width - 30) {
+
+
+//out of bounds
+  if ( ball1.x <= width - 20 ){
+    p1S++; //
+    reset();
+    return;
+  }
+
+ //left paddle
 
   if(ball1.y > p2 && ball1.y < p2 + 100) {
 
     ball1V.x *= -1;
-    console.log("p2");
 
   }
 
+}
+
+function reset() {
+  ball1 = createVector(width / 2, height /2);
 }
 
 
