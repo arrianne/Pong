@@ -19,7 +19,8 @@ function setup() {
   fill(255);
   //Drawing the ball
   ball1 = createVector(width / 2, height / 2);
-  ball1V = createVector(random(4), random(4));
+  ball1V = createVector(random(-1, 1), random(-1, 1));
+  ball1V.setMag(3); //setMag is a p5 thing which helps set the magnitude
 }
 
 
@@ -65,6 +66,7 @@ function handleBall() {
   //check if the x position actually falls on the length of the paddle
   if(ball1.y > p1 && ball1.y < p1 + 100){
       ball1V.x *= -1;
+      ball1V.mult(random(1, 1.1));// Increases the speed as it hits the paddle
     }
 
   } else if (ball1.x >= width - 30) {
@@ -78,11 +80,15 @@ function handleBall() {
  //left paddle
   if(ball1.y > p2 && ball1.y < p2 + 100) {
       ball1V.x *= -1;
+      ball1V.mult(random(1, 1.1));// Increases the speed as it hits the paddle
     }
   }
 
   function reset() {
+
+    ball1V.setMag(3);
     ball1 = createVector(width / 2, height /2);
+
   }
 }
 
