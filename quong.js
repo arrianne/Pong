@@ -1,3 +1,5 @@
+4 // 4 player Pong!
+
 var p1, p2;
 var p1V, p2V; //controlling the speed of the paddles
 var p1S, p2S;
