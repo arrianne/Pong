@@ -17,6 +17,11 @@ function setup() {
   p1S = 0;
   p2S = 0;
 
+  p3 = p4 = width / 2 - 50;
+  p3V = p4V = 0;
+  p3S = 0;
+  p4S = 0;
+
   //Drawing the title
 
   //Drawing the scoreboard
@@ -43,10 +48,10 @@ function draw() {
   rect(width - 30, p2, 10, 100);
   fill(230, 195, 244);
 
-  rect(250, 20, 100, 10, p3);
+  rect(p3, 20, 100, 10);
   fill(244, 233, 195);
-  
-  rect(250, 565, 100, 10, p4);
+
+  rect(p4, 565, 100, 10);
   fill(195, 224, 244);
 
   //creating the ball1
@@ -134,15 +139,39 @@ function handlePaddles() {
     p2V += 5;
   }
 
+  //player three controls
+  if(keyIsDown(84)){
+    //left
+    p3V -= 5;
+  } else if(keyIsDown(89)) {
+    //right
+    p3V += 5;
+  }
+
+  //player four controls
+  if(keyIsDown(66)){
+    //move left
+    p4V -= 5;
+  } else if(keyIsDown(78)) {
+    //move right
+    p4V += 5;
+  }
+
   //Slows the paddles down and gives the illusion of friction
   p1 += p1V;
   p2 += p2V;
+  p3 += p3V;
+  p4 += p4V;
 
   p1V *= 0.4;
   p2V *= 0.4;
+  p3V *= 0.4;
+  p4V *= 0.4;
 
   //Need to constrain the paddles
   p1 = constrain(p1, 0, height - 100);
   p2 = constrain(p2, 0, height - 100);
+  // p3 = constrain(p3, 0, height - 100);
+  // p4 = constrain(p4, 0, height - 100);
 
 }
