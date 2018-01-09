@@ -56,7 +56,7 @@ function draw() {
 
   //creating the ball1
   ellipse(ball1.x, ball1.y, 20);
-  fill(255, 255, 255)
+
   //handlling the scoreboard
   text(p1S + " | " + p2S, width / 2, 100);
   //handle paddles
@@ -171,7 +171,7 @@ function handlePaddles() {
   //Need to constrain the paddles
   p1 = constrain(p1, 0, height - 100);
   p2 = constrain(p2, 0, height - 100);
-  // p3 = constrain(p3, 0, height - 100);
-  // p4 = constrain(p4, 0, height - 100);
+  p3 = constrain(p3, 0, width - 100);
+  p4 = constrain(p4, 0, width - 100);
 
 }
