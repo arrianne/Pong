@@ -1,8 +1,8 @@
 4 // 4 player Pong!
 
-var p1, p2;
-var p1V, p2V; //controlling the speed of the paddles
-var p1S, p2S;
+var p1, p2, p3, p4;// Adding the 4 players
+var p1V, p2V, p3V, p4V; //controlling the speed of the paddles
+var p1S, p2S, p3S, p4S;
 
 var ball1, ball1V; //controlling the speed of the ball
 
@@ -11,7 +11,7 @@ var ball1, ball1V; //controlling the speed of the ball
 // setup is just run once
 function setup() {
 
-  createCanvas(600, 400);
+  createCanvas(600, 600); //Making the canvas a square
   p1 = p2 = height / 2 - 50; //This holds coordinates. Subtracting the height from half of the paddle so that the paddles start in the middle
   p1V = p2V = 0;
   p1S = 0;
@@ -23,6 +23,7 @@ function setup() {
   textAlign(CENTER);
   textSize(30);
   fill(255);
+
   //Drawing the ball
   ball1 = createVector(width / 2, height / 2);
   ball1V = createVector(random(-1, 1), random(-1, 1));
@@ -36,6 +37,9 @@ function draw() {
   //This creates the actual paddle shape, x axis not needed for up and down motion
   rect(20, p1, 10, 100);
   rect(width - 30, p2, 10, 100);
+  rect(250, 20, 100, 10, p3);
+  rect(250, 565, 100, 10, p4);
+
   //creating the ball1
   ellipse(ball1.x, ball1.y, 20);
   //handlling the scoreboard
