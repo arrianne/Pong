@@ -1,4 +1,4 @@
-4 // 4 player Pong!
+// 4 player Pong!
 
 var p1, p2, p3, p4;// Adding the 4 players
 var p1V, p2V, p3V, p4V; //controlling the speed of the paddles
@@ -33,17 +33,27 @@ function setup() {
 
 // This is run 60 times per second, as fast as it can go
 function draw() {
-  background(51);
+
+  background(0);
+
   //This creates the actual paddle shape, x axis not needed for up and down motion
   rect(20, p1, 10, 100);
+  fill(66, 244, 232);
+
   rect(width - 30, p2, 10, 100);
+  fill(230, 195, 244);
+
   rect(250, 20, 100, 10, p3);
+  fill(244, 233, 195);
+  
   rect(250, 565, 100, 10, p4);
+  fill(195, 224, 244);
 
   //creating the ball1
   ellipse(ball1.x, ball1.y, 20);
+  fill(255, 255, 255)
   //handlling the scoreboard
-  text(p1S + " | " + p2S, width / 2, 50);
+  text(p1S + " | " + p2S, width / 2, 100);
   //handle paddles
   handlePaddles();
   //handling the ball
