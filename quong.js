@@ -54,11 +54,11 @@ function draw() {
   rect(p4, 565, 100, 10);
   fill(195, 224, 244);
 
-  //creating the ball1
+  //creating the ball1s
   ellipse(ball1.x, ball1.y, 20);
 
   //handlling the scoreboard
-  text(p1S + " | " + p2S, width / 2, 100);
+  text(p1S + " | " + p2S + " | " + p3S + " | " + p4S, width / 2, 100);
   //handle paddles
   handlePaddles();
   //handling the ball
